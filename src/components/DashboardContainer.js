@@ -38,15 +38,15 @@ class DashboardContainer extends React.Component {
             <div className="container-fluid bg-dark" style={{width: '100%', height: '100%'}}>
                 <h3 style={{color: '#ccc'}}> Energy Tile Dashboard</h3>
                 <div className="row">
-                    <div className="col-10" style={{marginTop: '10px'}}>
+                    <div className="col-9" style={{marginTop: '10px'}}>
                         <div className="card-deck">
                             <MasterCard/>
-                            <Slave1Card/>
                             <Slave2Card/>
-                            <Slave3Card/>
                             <Slave4Card/>
-                            <Slave5Card/>
                             <Slave6Card/>
+                            <Slave1Card/>
+                            <Slave3Card/>
+                            <Slave5Card/>
                             <Slave7Card/>
 
                         </div>
@@ -117,7 +117,7 @@ class DashboardContainer extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-2 card shadow bg-dark" style={{borderColor : '#ccc'}}>
+                    <div className="col-3 card shadow bg-dark" style={{borderColor : '#ccc'}}>
                         <h5 style={{color: "#ccc"}}> Recent Activity </h5>
                         <RecentActivity/>
                     </div>

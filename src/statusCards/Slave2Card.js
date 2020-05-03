@@ -56,11 +56,11 @@ class Slave2Card extends React.Component{
                     <div className="card shadow bg-danger rounded">
                         <img className="card-img" src={yellow}/>
                         <div className="card-img-overlay">
-                            <h5 className="card-title" style={{color: '#ccc'}}>Slave 2</h5>
-                            <p className="card-text" style={{color: '#ccc'}}>Status : {this.state.status}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>IP : {this.state.ip}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>Capacitance : {this.state.cap}</p>
-                            <p className="card-text" style={{color: '#ccc'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
+                            <h5 className="card-title" >Slave 2</h5>
+                            <p className="card-text" >Status : {this.state.status}</p>
+                            <p className="card-text" >IP : {this.state.ip}</p>
+                            <p className="card-text" >Capacitance : {this.state.cap}</p>
+                            <p className="card-text" ><small className="text-muted">Last update : {this.state.timestamp}</small>
                             </p>
                         </div>
                     </div>

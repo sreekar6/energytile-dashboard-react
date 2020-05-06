@@ -40,40 +40,153 @@ class Slave2Adc extends React.Component {
                     this.setState({series : [{name: "ADC", data: series}]});
                     this.setState({options: {
                             chart: {
-                                height: 350,
+                                fontFamily: 'Nunito, sans-serif',
+                                height: 365,
                                 type: 'area',
                                 foreColor: "#ccc",
+                                zoom: {
+                                    enabled: false
+                                },
+                                dropShadow: {
+                                    enabled: true,
+                                    opacity: 0.3,
+                                    blur: 5,
+                                    left: -7,
+                                    top: 22
+                                },
+                                toolbar: {
+                                    show: false
+                                },
                             },
+                            colors: ['#1b55e2', '#e7515a'],
                             dataLabels: {
-                                enabled: false,
+                                enabled: false
                             },
                             stroke: {
-                                curve: 'smooth'
+                                show: true,
+                                curve: 'smooth',
+                                width: 2,
+                                lineCap: 'square'
                             },
                             markers: {
-                                size: 5,
-                                colors: ["#000524"],
-                                strokeColor: "#00BAEC",
-                                strokeWidth: 3
+                                discrete: [{
+                                    seriesIndex: 0,
+                                    dataPointIndex: 7,
+                                    fillColor: '#000',
+                                    strokeColor: '#000',
+                                    size: 5
+                                }, {
+                                    seriesIndex: 2,
+                                    dataPointIndex: 11,
+                                    fillColor: '#000',
+                                    strokeColor: '#000',
+                                    size: 4
+                                }]
                             },
                             grid: {
-                                borderColor: "#555",
-                                clipMarkers: false,
+                                borderColor: '#191e3a',
+                                strokeDashArray: 5,
+                                xaxis: {
+                                    lines: {
+                                        show: true
+                                    }
+                                },
                                 yaxis: {
                                     lines: {
-                                        show: false
+                                        show: false,
                                     }
+                                },
+                                padding: {
+                                    top: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    left: -10
+                                },
+                            },
+                            yaxis: {
+                                labels: {
+                                    offsetX: -15,
+                                    offsetY: 0,
+                                    style: {
+                                        fontSize: '12px',
+                                        fontFamily: 'Nunito, sans-serif',
+                                        cssClass: 'apexcharts-yaxis-title',
+                                    },
                                 }
                             },
                             xaxis: {
                                 type: 'datetime',
                                 categories: timestamp,
+                                axisBorder: {
+                                    show: false
+                                },
+                                axisTicks: {
+                                    show: false
+                                },
+                                crosshairs: {
+                                    show: true
+                                },
+                                labels: {
+                                    offsetX: 0,
+                                    offsetY: 5,
+                                    style: {
+                                        fontSize: '12px',
+                                        fontFamily: 'Nunito, sans-serif',
+                                        cssClass: 'apexcharts-xaxis-title',
+                                    },
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                horizontalAlign: 'right',
+                                // offsetY: -50,
+                                fontSize: '16px',
+                                fontFamily: 'Nunito, sans-serif',
+                                markers: {
+                                    width: 10,
+                                    height: 10,
+                                    strokeWidth: 0,
+                                    strokeColor: '#fff',
+                                    fillColors: undefined,
+                                    radius: 12,
+                                    onClick: undefined,
+                                    offsetX: 0,
+                                    offsetY: 0
+                                },
+                                itemMargin: {
+                                    horizontal: 0,
+                                    vertical: 20
+                                }
                             },
                             tooltip: {
-                                x: {
-                                    format: 'dd/MM/yy HH:mm'
+                                theme: 'dark',
+                                marker: {
+                                    show: true,
                                 },
+                                x: {
+                                    show: false,
+                                    format: 'dd/MM/yy HH:mm'
+                                }
                             },
+                            fill: {
+                                type:"gradient",
+                                gradient: {
+                                    type: "vertical",
+                                    shadeIntensity: 1,
+                                    inverseColors: !1,
+                                    opacityFrom: .28,
+                                    opacityTo: .05,
+                                    stops: [45, 100]
+                                }
+                            },
+                            responsive: [{
+                                breakpoint: 575,
+                                options: {
+                                    legend: {
+                                        offsetY: -30,
+                                    },
+                                },
+                            }]
                         }})
 
                 }

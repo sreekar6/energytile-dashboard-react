@@ -28,11 +28,11 @@ class MasterCard extends React.Component{
                     <div className="card shadow bg-success rounded">
                         <img className="card-img" src={green}/>
                         <div className="card-img-overlay ">
-                            <h5 className="card-title" style={{color: '#ccc'}}>Master</h5>
-                            <p className="card-text" style={{color: '#ccc'}}>Status : {this.state.status}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>IP : {this.state.ip}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>Capacitance : {this.state.cap}</p>
-                            <p className="card-text" style={{color: '#ccc'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
+                            <h5 className="card-title" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Master</h5>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Status : {this.state.status}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>IP : {this.state.ip}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Capacitance : {this.state.cap}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
                             </p>
                         </div>
                     </div>
@@ -42,11 +42,11 @@ class MasterCard extends React.Component{
                     <div className="card shadow bg-dark rounded">
                         <img className="card-img" src={blue}/>
                         <div className="card-img-overlay">
-                            <h5 className="card-title" style={{color: '#ccc'}}>Master</h5>
-                            <p className="card-text" style={{color: '#ccc'}}>Status : {this.state.status}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>IP : {this.state.ip}</p>
-                            <p className="card-text" style={{color: '#ccc'}}>Capacitance : {this.state.cap}</p>
-                            <p className="card-text" style={{color: '#ccc'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
+                            <h5 className="card-title" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Master</h5>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Status : {this.state.status}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>IP : {this.state.ip}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Capacitance : {this.state.cap}</p>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
                             </p>
                         </div>
                     </div>

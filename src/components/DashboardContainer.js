@@ -35,24 +35,30 @@ class DashboardContainer extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid bg-dark" style={{width: '100%', height: '100%'}}>
-                <h3 style={{color: '#ccc'}}> Energy Tile Dashboard</h3>
-                <div className="row">
-                    <div className="col-9" style={{marginTop: '10px'}}>
-                        <div className="card-deck">
-                            <MasterCard/>
-                            <Slave2Card/>
-                            <Slave4Card/>
-                            <Slave6Card/>
-                            <Slave1Card/>
-                            <Slave3Card/>
-                            <Slave5Card/>
-                            <Slave7Card/>
-
+            <div className="container-fluid " style={{width: '100%', height: '100%', backgroundColor: "#060818"}}>
+                <h3 style={{color: 'white', fontFamily: 'Nunito Sans'}}> Energy Tile Dashboard</h3>
+                {/*<div className="row">*/}
+                {/*    <div className="col-9" style={{marginTop: '10px'}}>*/}
+                <div className="row offset-xl-0" style={{marginTop: '10px', marginLeft: "30px", display : 'flex'}}>
+                        <div className="card-deck shadow">
+                            <div className='row'>
+                                <MasterCard/>
+                                <Slave2Card/>
+                                <Slave4Card/>
+                                <Slave6Card/>
+                            </div>
+                            <div className="row">
+                                <Slave1Card/>
+                                <Slave3Card/>
+                                <Slave5Card/>
+                                <Slave7Card/>
+                            </div>
                         </div>
-
-                        <div style={{marginTop : '30px', padding: '70px', borderColor : '#ccc'}} className="card shadow bg-dark">
-                            <select className="form-control col-2" placeholder="Device" onChange={(e) =>
+                </div>
+                <div className="row" style={{marginTop : '20px'}}>
+                    <div className="col-9" >
+                        <div style={{padding: '10px', borderColor : '#ccc', backgroundColor: '#0e1726'}} className="card shadow">
+                            <select className="form-control col-2 bg-transparent" style={{color: '#ccc'}} placeholder="Device" onChange={(e) =>
                                 this.setState({
                                 chartType : e.target.value
                             })}>
@@ -117,8 +123,8 @@ class DashboardContainer extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-3 card shadow bg-dark" style={{borderColor : '#ccc'}}>
-                        <h5 style={{color: "#ccc"}}> Recent Activity </h5>
+                    <div className="col-3 card shadow" style={{borderColor : '#ccc', backgroundColor: '#0e1726', marginBottom:'10px'}}>
+                        <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '10px'}}> Recent Activity </h5>
                         <RecentActivity/>
                     </div>
 

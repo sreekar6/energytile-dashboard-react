@@ -1,6 +1,8 @@
 import React from "react";
 import Timeline from "react-time-line";
 import PerfectScrollbar from "perfect-scrollbar";
+import '../css/custom-timeline.css'
+
 
 class RecentActivity extends React.Component {
 
@@ -23,29 +25,82 @@ class RecentActivity extends React.Component {
     render() {
         console.log(this.state.events);
         return (
-            <div style={{margin: '10px'}}>
-                <Timeline items={this.state.events}/>
+            // <div style={{margin: '10px'}}>
+            //     <Timeline items={this.state.events}/>
+            // </div>
+            <div className="timeline-line" style={{padding : '10px'}}>
+                {
+                    this.state.events && this.state.events.map( event =>
+                        <div className="item-timeline timeline-warning">
+                            {
+                                (event.onOFF === 'on') &&
+                                <div className="t-dot t-dot-success" data-original-title="" title="">
+                                </div>
+
+                            }
+                            {
+                                (event.onOFF === 'off') &&
+                                <div className="t-dot t-dot-danger" data-original-title="" title="">
+                                </div>
+                            }
+                            {
+                                <div className="t-text row">
+                                    <p className="col-9">{event.activity}
+                                        {
+                                            (event.onOFF === 'on') &&
+                                            <span className="badge badge-success" style={{marginLeft: '10px', paddingRight: '5px', paddingLeft: '5px'}}>ON</span>
+
+                                        }
+                                        {
+                                            (event.onOFF === 'off') &&
+                                            <span className="badge badge-danger" style={{marginLeft: '10px'}}>OFF</span>
+                                        }
+
+                                    </p>
+                                    <p className="t-time col-3">{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
+                                </div>
+                            }
+                        </div>
+
+                    )
+                }
             </div>
+
         );
 
     }
 
+    // fetchActivity = () => {
+    //     fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
+    //         .then(response => response.json())
+    //         .then(response => {
+    //             console.log(response);
+    //             response = response.slice((response.length - 10), response.length);
+    //             console.log('After Slicing-->',response);
+    //             let activity = [];
+    //             response.forEach(event =>
+    //                 activity.push({ts: event.tstamp, text : event.activity})
+    //             )
+    //             this.setState({
+    //                 events : activity.reverse()
+    //             })
+    //         })
+    // }
+
     fetchActivity = () => {
         fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
             .then(response => response.json())
-            .then(response => {
-                console.log(response);
+            .then( response => {
                 response = response.slice((response.length - 10), response.length);
                 console.log('After Slicing-->',response);
-                let activity = [];
-                response.forEach(event =>
-                    activity.push({ts: event.tstamp, text : event.activity})
-                )
                 this.setState({
-                    events : activity.reverse()
+                    events : response.reverse()
                 })
+                console.log('State : ', this.state.events)
             })
     }
+
+
 }
 
 export default RecentActivity

@@ -57,7 +57,7 @@ class DashboardContainer extends React.Component {
                 </div>
                 <div className="row" style={{marginTop : '20px'}}>
                     <div className="col-9" >
-                        <div style={{padding: '10px', borderColor : '#ccc', backgroundColor: '#0e1726'}} className="card shadow">
+                        <div style={{padding: '10px',borderRadius: '10px', backgroundColor: '#0e1726'}} className="card shadow">
                             <select className="form-control col-2 bg-transparent" style={{color: '#ccc'}} placeholder="Device" onChange={(e) =>
                                 this.setState({
                                 chartType : e.target.value
@@ -123,9 +123,11 @@ class DashboardContainer extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-3 card shadow" style={{borderColor : '#ccc', backgroundColor: '#0e1726', marginBottom:'10px'}}>
-                        <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '10px'}}> Recent Activity </h5>
-                        <RecentActivity/>
+                    <div className="col-3">
+                        <div className="card shadow" style={{padding: '10px',backgroundColor: '#0e1726', borderRadius: '10px'}}>
+                            <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '5px'}}> Recent Activity </h5>
+                            <RecentActivity/>
+                        </div>
                     </div>
 
                 </div>

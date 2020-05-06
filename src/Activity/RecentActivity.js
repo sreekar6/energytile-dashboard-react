@@ -1,6 +1,6 @@
 import React from "react";
 import Timeline from "react-time-line";
-import PerfectScrollbar from "perfect-scrollbar";
+
 import '../css/custom-timeline.css'
 
 

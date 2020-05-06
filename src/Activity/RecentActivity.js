@@ -45,19 +45,19 @@ class RecentActivity extends React.Component {
                             }
                             {
                                 <div className="t-text row">
-                                    <p className="col-9">{event.activity}
+                                    <p className="">{event.activity}
                                         {
                                             (event.onOFF === 'on') &&
-                                            <span className="badge badge-success" style={{marginLeft: '10px', paddingRight: '5px', paddingLeft: '5px'}}>ON</span>
+                                            <span className="badge badge-success" style={{paddingRight: '5px', paddingLeft: '5px'}}>ON</span>
 
                                         }
                                         {
                                             (event.onOFF === 'off') &&
-                                            <span className="badge badge-danger" style={{marginLeft: '10px'}}>OFF</span>
+                                            <span className="badge badge-danger" style={{}}>OFF</span>
                                         }
 
                                     </p>
-                                    <p className="t-time col-3">{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
+                                    {/*<p className="t-time">{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>*/}
                                 </div>
                             }
                         </div>

@@ -27,10 +27,10 @@ class RecentActivity extends React.Component {
             //     <Timeline items={this.state.events}/>
             // </div>
 
-            <div className="timeline-line" style={{padding : '10px'}}>
+            <div className="timeline-line" style={{paddingLeft : '10px'}}>
                 {
                     this.state.events && this.state.events.map( event =>
-                        <div className="item-timeline timeline-warning">
+                        <div className="item-timeline timeline-primary">
                             {
                                 (event.onOFF === 'on') &&
                                 <div className="t-dot t-dot-success" data-original-title="" title="">
@@ -47,16 +47,17 @@ class RecentActivity extends React.Component {
                                     <p className="">{event.activity}
                                         {
                                             (event.onOFF === 'on') &&
-                                            <span className="badge badge-success" style={{paddingRight: '5px', paddingLeft: '5px'}}>ON</span>
+                                            <span className="badge badge-success" style={{marginLeft: '30px',paddingRight: '6px', paddingLeft: '6px'}}>ON</span>
 
                                         }
                                         {
                                             (event.onOFF === 'off') &&
-                                            <span className="badge badge-danger" style={{}}>OFF</span>
+                                            <span className="badge badge-danger" style={{marginLeft: '30px'}}>OFF</span>
                                         }
 
                                     </p>
-                                    {/*<p className="t-time">{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>*/}
+                                    <p style={{marginLeft : '55px', fontSize:'10px'}}>{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
+
                                 </div>
                             }
                         </div>
@@ -90,7 +91,7 @@ class RecentActivity extends React.Component {
         fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
             .then(response => response.json())
             .then( response => {
-                // response = response.slice((response.length - 10), response.length);
+                response = response.slice((response.length - 10), response.length);
                 console.log('After Slicing-->',response);
                 this.setState({
                     events : response.reverse()

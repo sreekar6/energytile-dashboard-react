@@ -32,7 +32,7 @@ class MasterCard extends React.Component{
                             {/*<p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Status : {this.state.status}</p>*/}
                             {/*<p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>IP : {this.state.ip}</p>*/}
                             <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Capacitance : {this.state.cap}</p>
-                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small className="text-muted">Last update : {new Date(this.state.timestamp).getHours()}:{new Date(this.state.timestamp).getMinutes()}:{new Date(this.state.timestamp).getSeconds()}</small>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small>Last update : {new Date(this.state.timestamp).getHours()}:{new Date(this.state.timestamp).getMinutes()}:{new Date(this.state.timestamp).getSeconds()}</small>
                             </p>
                         </div>
                     </div>
@@ -43,10 +43,10 @@ class MasterCard extends React.Component{
                         <img className="card-img" src={blue}/>
                         <div className="card-img-overlay">
                             <h5 className="card-title" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Master</h5>
-                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Status : {this.state.status}</p>
-                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>IP : {this.state.ip}</p>
+                            {/*<p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Status : {this.state.status}</p>*/}
+                            {/*<p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>IP : {this.state.ip}</p>*/}
                             <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}>Capacitance : {this.state.cap}</p>
-                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small className="text-muted">Last update : {this.state.timestamp}</small>
+                            <p className="card-text" style={{color: '#ccc'}}><small>Last update : OFF</small>
                             </p>
                         </div>
                     </div>
@@ -57,10 +57,10 @@ class MasterCard extends React.Component{
                         <img className="card-img" src={yellow}/>
                         <div className="card-img-overlay">
                             <h5 className="card-title">Master</h5>
-                            <p className="card-text">Status : {this.state.status}</p>
-                            <p className="card-text">IP : {this.state.ip}</p>
+                            {/*<p className="card-text">Status : {this.state.status}</p>*/}
+                            {/*<p className="card-text">IP : {this.state.ip}</p>*/}
                             <p className="card-text">Capacitance : {this.state.cap}</p>
-                            <p className="card-text"><small className="text-muted">Last update : {this.state.timestamp}</small>
+                            <p className="card-text" style={{color: '#ccc',fontFamily: 'Nunito Sans'}}><small>Last update : {new Date(this.state.timestamp).getHours()}:{new Date(this.state.timestamp).getMinutes()}:{new Date(this.state.timestamp).getSeconds()}</small>
                             </p>
                         </div>
                     </div>

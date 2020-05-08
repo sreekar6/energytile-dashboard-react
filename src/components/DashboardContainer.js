@@ -22,9 +22,9 @@ class DashboardContainer extends React.Component {
     render() {
         return (
             <div className="bg-dark">
-                <nav class="navbar navbar-expand-sm" style={{background: '#060818'}}>
-                    <a class="navbar-brand" href="#">
-                        <img src={logo} width="30" height="30" class="d-inline-block align-top" alt="" style={{borderRadius : '5px', justifyContent :'space-between'}}/>
+                <nav className="navbar navbar-expand-sm" style={{background: '#060818'}}>
+                    <a className="navbar-brand" href="#">
+                        <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" style={{borderRadius : '5px', justifyContent :'space-between'}}/>
                         <a style={{color: 'white', fontFamily: 'Nunito Sans', fontSize : '24px', fontWeight : '700', paddingLeft : '10px'}}> DeepCharge</a>
 
                         <a style={{marginLeft : '1100px'}}><img src={ca} width="25" height="25" alt="flag"/></a>
@@ -35,7 +35,7 @@ class DashboardContainer extends React.Component {
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
                         </a>
-                        <a><img src={logo} width="30" height="30" class="d-inline-block align-top" alt="" style={{borderRadius : '5px', marginTop : '5px'}} alt="avatar"/></a>
+                        <a><img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" style={{borderRadius : '5px', marginTop : '5px'}} alt="avatar"/></a>
 
                     </a>
 

@@ -1,5 +1,6 @@
 import React from "react";
-import '../css/custom-timeline.css'
+
+import '../css/modules-widgets.css'
 
 
 class RecentActivity extends React.Component {
@@ -22,48 +23,59 @@ class RecentActivity extends React.Component {
 
     render() {
         console.log(this.state.events);
+        
         return (
             // <div style={{margin: '10px'}}>
             //     <Timeline items={this.state.events}/>
             // </div>
+            <div class="widget widget-activity-four">
 
-            <div className="timeline-line" style={{paddingLeft : '10px'}}>
-                {
-                    this.state.events && this.state.events.map( event =>
-                        <div className="item-timeline timeline-primary">
-                            {
-                                (event.onOFF === 'on') &&
-                                <div className="t-dot t-dot-success" data-original-title="" title="">
-                                </div>
+                <div class="widget-heading">
+                    <h5 class="">Recent Activities</h5>
+                </div>
 
-                            }
+                <div class="widget-content">
+                    <div class="mt-container mx-auto">
+
+                        <div className="timeline-line" >
                             {
-                                (event.onOFF === 'off') &&
-                                <div className="t-dot t-dot-danger" data-original-title="" title="">
-                                </div>
-                            }
-                            {
-                                <div className="t-text row">
-                                    <p className="">{event.activity}
+                                this.state.events && this.state.events.map( event =>
+                                    
+                                    <>
                                         {
                                             (event.onOFF === 'on') &&
-                                            <span className="badge badge-success" style={{marginLeft: '30px',paddingRight: '6px', paddingLeft: '6px'}}>ON</span>
+                                            <div className="item-timeline timeline-success">
+                                                <div className="t-dot t-dot-success" data-original-title="" title="">
+                                                </div>
+                                                <div className="t-text">
+                                                    <p>{event.activity}</p>
+                                                    <span className="badge badge-success" style={{paddingLeft : '9px', paddingRight : '9px'}}>ON</span>
+                                                    <p className="t-time" >{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
+
+                                                </div>
+                                            </div>
 
                                         }
+
                                         {
                                             (event.onOFF === 'off') &&
-                                            <span className="badge badge-danger" style={{marginLeft: '30px'}}>OFF</span>
+                                            <div className="item-timeline timeline-danger">
+                                                <div className="t-dot t-dot-danger" data-original-title="" title="">
+                                                </div>
+                                                <div className="t-text">
+                                                    <p>{event.activity}</p>
+                                                    <span className="badge badge-danger" style={{paddingLeft : '7px', paddingRight : '7px'}}>OFF</span>
+                                                    <p className="t-time" >{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
+                                                </div>
+                                            </div>
                                         }
-
-                                    </p>
-                                    <p style={{marginLeft : '55px', fontSize:'10px'}}>{new Date(event.tstamp).getHours()}:{new Date(event.tstamp).getMinutes()}:{new Date(event.tstamp).getSeconds()}</p>
-
-                                </div>
+                                    </>
+                                )
                             }
                         </div>
-                    )
-                }
 
+                    </div>
+                </div>
             </div>
 
         );
@@ -91,7 +103,7 @@ class RecentActivity extends React.Component {
         fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
             .then(response => response.json())
             .then( response => {
-                response = response.slice((response.length - 10), response.length);
+                // response = response.slice((response.length - 10), response.length);
                 console.log('After Slicing-->',response);
                 this.setState({
                     events : response.reverse()

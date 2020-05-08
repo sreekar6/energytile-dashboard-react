@@ -17,7 +17,7 @@ import Slave6Adc from "../adcCharts/Slave6Adc";
 import Slave7Adc from "../adcCharts/Slave7Adc";
 import RecentActivity from "../Activity/RecentActivity";
 import PerfectScrollbar from "react-perfect-scrollbar";
-
+import '../css/modules-widgets.css'
 
 class EnergyTiles extends React.Component{
 
@@ -33,6 +33,7 @@ class EnergyTiles extends React.Component{
 
     render() {
         return (
+            <div class="main-content">
             <div className="container-fluid " style={{width: '100%', height: '100%', backgroundColor: "#060818"}}>
                 {/*<h3 style={{color: 'white', fontFamily: 'Nunito Sans'}}> Energy Tile Dashboard</h3>*/}
                 {/*<div className="row">*/}
@@ -53,8 +54,9 @@ class EnergyTiles extends React.Component{
                         </div>
                     </div>
                 </div>
+
                 <div className="row" style={{marginTop : '20px'}}>
-                    <div className="col-9" >
+                    <div className="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing" >
                         <div style={{paddingTop: '10px',paddingLeft: '20px',paddingRight: '10px',borderRadius: '10px',marginBottom:'10px', backgroundColor: '#0e1726'}} className="card shadow">
                             <p style={{fontSize : '20px'}}>Sensing Data : ADC Values
                                 <button className='btn btn-danger btn-sm' style={{float: 'right'}}><span>Live</span></button>
@@ -125,14 +127,13 @@ class EnergyTiles extends React.Component{
                         </div>
                     </div>
 
-                    <div className="col-3">
-                        <div className="card shadow" style={{padding: '10px',backgroundColor: '#0e1726', borderRadius: '10px'}}>
-                            <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '5px', paddingLeft : '5px'}}> Recent Activities </h5>
-                            <RecentActivity/>
-                        </div>
-                    </div>
+                    <div className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
 
+                        <RecentActivity/>
+       
+                    </div>   
                 </div>
+            </div>
             </div>
         );
     }

@@ -396,7 +396,7 @@
       content: '';
       position: absolute;
       border-color: inherit;
-      border-width: 2px;
+      border-width: 0px;
       border-style: solid;
       border-radius: 50%;
       width: 10px;
@@ -409,7 +409,7 @@
       content: '';
       position: absolute;
       border-color: inherit;
-      border-width: 2px;
+      border-width: 10px;
       border-style: solid;
       border-radius: 50%;
       width: 10px;

@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import '../css/custom-timeline.css'
 
 
@@ -28,6 +26,7 @@ class RecentActivity extends React.Component {
             // <div style={{margin: '10px'}}>
             //     <Timeline items={this.state.events}/>
             // </div>
+
             <div className="timeline-line" style={{padding : '10px'}}>
                 {
                     this.state.events && this.state.events.map( event =>
@@ -61,9 +60,9 @@ class RecentActivity extends React.Component {
                                 </div>
                             }
                         </div>
-
                     )
                 }
+
             </div>
 
         );
@@ -91,7 +90,7 @@ class RecentActivity extends React.Component {
         fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
             .then(response => response.json())
             .then( response => {
-                response = response.slice((response.length - 10), response.length);
+                // response = response.slice((response.length - 10), response.length);
                 console.log('After Slicing-->',response);
                 this.setState({
                     events : response.reverse()

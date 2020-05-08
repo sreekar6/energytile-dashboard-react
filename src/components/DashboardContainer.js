@@ -1,26 +1,8 @@
 import React from "react";
-import ReactApexChart from 'apexcharts'
-import Chart from "react-apexcharts";
-import MasterAdc from "../adcCharts/MasterAdc";
-import MasterCard from "../statusCards/MasterCard";
-import Slave1Adc from "../adcCharts/Slave1Adc";
-import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component'
-import Slave2Adc from "../adcCharts/Slave2Adc";
-import Slave1Card from "../statusCards/Slave1Card";
-import Slave2Card from "../statusCards/Slave2Card";
-import Slave3Card from "../statusCards/Slave3Card";
-import Slave4Card from "../statusCards/Slave4Card";
-import Slave5Card from "../statusCards/Slave5Card";
-import Slave6Card from "../statusCards/Slave6Card";
-import Slave7Card from "../statusCards/Slave7Card";
-import Slave3Adc from "../adcCharts/Slave3Adc";
-import Slave4Adc from "../adcCharts/Slave4Adc";
-import Slave5Adc from "../adcCharts/Slave5Adc";
-import Slave6Adc from "../adcCharts/Slave6Adc";
-import Slave7Adc from "../adcCharts/Slave7Adc";
-import Timeline from "react-time-line";
-import RecentActivity from "../Activity/RecentActivity";
-
+import EnergyTiles from "./EnergyTiles";
+import green from '../images/green.png'
+import '../css/structure.css'
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 
 class DashboardContainer extends React.Component {
 
@@ -29,111 +11,168 @@ class DashboardContainer extends React.Component {
         super(props);
 
         this.state = {
-            chartType : 'master',
-
+            showDashboard : false,
+            showApps : false,
+            showEnergyTile : false,
         };
     }
 
-
     render() {
         return (
-            <div className="container-fluid " style={{width: '100%', height: '100%', backgroundColor: "#060818"}}>
-                <h3 style={{color: 'white', fontFamily: 'Nunito Sans'}}> Energy Tile Dashboard</h3>
-                {/*<div className="row">*/}
-                {/*    <div className="col-9" style={{marginTop: '10px'}}>*/}
-                <div className="row offset-xl-0" style={{marginTop: '10px', marginLeft: "30px", display : 'flex'}}>
-                        <div className="card-deck shadow">
-                            <div className='row'>
-                                <MasterCard/>
-                                <Slave2Card/>
-                                <Slave4Card/>
-                                <Slave6Card/>
-                            </div>
-                            <div className="row">
-                                <Slave1Card/>
-                                <Slave3Card/>
-                                <Slave5Card/>
-                                <Slave7Card/>
-                            </div>
-                        </div>
-                </div>
-                <div className="row" style={{marginTop : '20px'}}>
-                    <div className="col-9" >
-                        <div style={{padding: '10px',borderRadius: '10px', backgroundColor: '#0e1726'}} className="card shadow">
-                            <select className="form-control col-2 bg-transparent" style={{color: '#ccc'}} placeholder="Device" onChange={(e) =>
-                                this.setState({
-                                chartType : e.target.value
-                            })}>
-                                <option value="master"> Master </option>
-                                <option value="slave1"> Slave1 </option>
-                                <option value="slave2"> Slave2 </option>
-                                <option value="slave3"> Slave3 </option>
-                                <option value="slave4"> Slave4 </option>
-                                <option value="slave5"> Slave5 </option>
-                                <option value="slave6"> Slave6 </option>
-                                <option value="slave7"> Slave7 </option>
-                            </select>
-                            {
-                                (this.state.chartType === 'master') && <MasterAdc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave1') && <Slave1Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave2') && <Slave2Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave3') && <Slave3Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave4') && <Slave4Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave5') && <Slave5Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave6') && <Slave6Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
-                            {
-                                (this.state.chartType === 'slave7') && <Slave7Adc
-                                    options={this.state.options}
-                                    series={this.state.series}
-                                />
-                            }
+            <div className="bg-dark">
+                <nav class="navbar navbar-expand-sm" style={{background: '#060818'}}>
+                    <a class="navbar-brand" href="#">
+                        <img src={green} width="30" height="30" class="d-inline-block align-top" alt="" style={{borderRadius : '5px', justifyContent :'space-between'}}/>
+                        <a style={{color: 'white', fontFamily: 'Nunito Sans', fontSize : '24px', fontWeight : '700', paddingLeft : '10px'}}> DeepCharge</a>
+                    </a>
+                </nav>
 
-                        </div>
+                <nav className="navbar navbar-expand-sm" style={{background: '#1a1c2d'}}>
+                    <a className="navbar-brand" href="#">
+                        <a href="#" className="sidebarCollapse" data-placement="bottom">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="#e0e6ed" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" className="feather feather-menu">
+                                <line x1="3" y1="12" x2="21" y2="12"/>
+                                <line x1="3" y1="6" x2="21" y2="6"/>
+                                <line x1="3" y1="18" x2="21" y2="18"/>
+                            </svg>
+                        </a>
+
+                        <a style={{color: '#e0e6ed', fontFamily: 'Nunito Sans', fontSize : '15px', fontWeight : '700', paddingLeft : '10px'}}>Dashboard /</a>
+                        <a style={{color: '#e0e6ed', fontFamily: 'Nunito Sans', fontSize : '15px', fontWeight : '700'}}> Energy Tile</a>
+                    </a>
+                </nav>
+
+                <div className="row">
+                    <div className="col-2">
+                        <nav className="sidebar-wrapper" style={{background: '#060818'}}>
+                            <ul className="list-unstyled menu-categories" id="accordionExample" style={{paddingTop : '20px'}}>
+                                <li className="menu" style={{marginLeft : '25px'}}>
+                                    <div className="dropdown show">
+                                        <a className="btn" style={{background : '#364756', borderRadius : '6px'}} onClick={() => this.setState({
+                                            showDashboard : !this.state.showDashboard
+                                        })}>
+                                            <div className="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-home">
+                                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                                </svg>
+                                                <span style={{color: '#e0e6ed', fontFamily: 'Nunito Sans', fontSize : '14px', fontWeight : '700', marginLeft : '20px', marginRight : '25px'}}>Dashboard</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-chevron-right">
+                                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                                </svg>
+                                            </div>
+
+                                        </a>
+                                        {
+                                            this.state.showDashboard &&
+                                            <ul style={{marginTop: "10px"}}>
+                                                <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Energy Tiles</li>
+                                                <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Work Pad</li>
+                                            </ul>
+                                        }
+                                    </div>
+                                </li>
+
+                                <li className="menu" style={{marginLeft : '25px', marginTop : '10px'}}>
+                                    <div className="dropdown show">
+                                        <a className="btn" style={{borderRadius : '6px'}} onClick={() => this.setState({
+                                            showApps : !this.state.showApps
+                                        })}>
+                                            <div className="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-cpu">
+                                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                                                    <rect x="9" y="9" width="6" height="6"/>
+                                                    <line x1="9" y1="1" x2="9" y2="4"/>
+                                                    <line x1="15" y1="1" x2="15" y2="4"/>
+                                                    <line x1="9" y1="20" x2="9" y2="23"/>
+                                                    <line x1="15" y1="20" x2="15" y2="23"/>
+                                                    <line x1="20" y1="9" x2="23" y2="9"/>
+                                                    <line x1="20" y1="14" x2="23" y2="14"/>
+                                                    <line x1="1" y1="9" x2="4" y2="9"/>
+                                                    <line x1="1" y1="14" x2="4" y2="14"/>
+                                                </svg>
+                                                <span style={{color: '#e0e6ed', fontFamily: 'Nunito Sans', fontSize : '14px', fontWeight : '700', marginLeft : '20px', marginRight : '63px'}}>Apps</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-chevron-right">
+                                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                                </svg>
+                                            </div>
+
+                                        </a>
+                                        { this.state.showApps &&
+                                        <ul style={{marginTop: "10px"}}>
+                                            <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Energy Tile App</li>
+                                            <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Work Pad App</li>
+                                        </ul>
+                                        }
+                                    </div>
+                                </li>
+
+                                <li className="menu" style={{marginLeft : '25px', marginTop : '10px'}}>
+                                    <div className="dropdown show">
+                                        <a className="btn" style={{ borderRadius : '6px'}} onClick={() => this.setState({
+                                            showApps : !this.state.showApps
+                                        })}>
+                                            <div className="">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-cpu">
+                                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                                                    <rect x="9" y="9" width="6" height="6"/>
+                                                    <line x1="9" y1="1" x2="9" y2="4"/>
+                                                    <line x1="15" y1="1" x2="15" y2="4"/>
+                                                    <line x1="9" y1="20" x2="9" y2="23"/>
+                                                    <line x1="15" y1="20" x2="15" y2="23"/>
+                                                    <line x1="20" y1="9" x2="23" y2="9"/>
+                                                    <line x1="20" y1="14" x2="23" y2="14"/>
+                                                    <line x1="1" y1="9" x2="4" y2="9"/>
+                                                    <line x1="1" y1="14" x2="4" y2="14"/>
+                                                </svg>
+                                                <span style={{color: '#e0e6ed', fontFamily: 'Nunito Sans', fontSize : '14px', fontWeight : '700', marginLeft : '20px', marginRight : '0px'}}>Admin Control</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                     viewBox="0 0 24 24" fill="none" stroke="#e0e6ed"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     className="feather feather-chevron-right">
+                                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                                </svg>
+                                            </div>
+
+                                        </a>
+                                        { this.state.showApps &&
+                                        <ul style={{marginTop: "10px"}}>
+                                            <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Energy Tile App</li>
+                                            <li style={{margin: '10px',color: '#479788', fontFamily: 'Nunito Sans', fontSize : '13px', fontWeight : '600'}}>Work Pad App</li>
+                                        </ul>
+                                        }
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </nav>
                     </div>
 
-                    <div className="col-3">
-                        <div className="card shadow" style={{padding: '10px',backgroundColor: '#0e1726', borderRadius: '10px'}}>
-                            <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '5px'}}> Recent Activity </h5>
-                            <RecentActivity/>
-                        </div>
+                    <div className="col-10">
+                        <Router>
+                            <Route path="/"
+                                   render={() => <EnergyTiles/>}
+                            />
+                        </Router>
                     </div>
-
                 </div>
-
 
 
             </div>

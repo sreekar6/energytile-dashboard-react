@@ -16,6 +16,7 @@ import Slave5Adc from "../adcCharts/Slave5Adc";
 import Slave6Adc from "../adcCharts/Slave6Adc";
 import Slave7Adc from "../adcCharts/Slave7Adc";
 import RecentActivity from "../Activity/RecentActivity";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 
 class EnergyTiles extends React.Component{
@@ -54,20 +55,24 @@ class EnergyTiles extends React.Component{
                 </div>
                 <div className="row" style={{marginTop : '20px'}}>
                     <div className="col-9" >
-                        <div style={{padding: '10px',borderRadius: '10px', backgroundColor: '#0e1726'}} className="card shadow">
+                        <div style={{paddingTop: '10px',paddingLeft: '20px',paddingRight: '10px',borderRadius: '10px',marginBottom:'10px', backgroundColor: '#0e1726'}} className="card shadow">
+                            <p style={{fontSize : '20px'}}>Sensing Data : ADC Values
+                                <button className='btn btn-danger btn-sm' style={{float: 'right'}}><span>Live</span></button>
+                            </p>
                             <select className="form-control col-2 bg-transparent" style={{color: '#ccc'}} placeholder="Device" onChange={(e) =>
                                 this.setState({
                                     chartType : e.target.value
                                 })}>
-                                <option value="master"> Master </option>
-                                <option value="slave1"> Slave1 </option>
-                                <option value="slave2"> Slave2 </option>
-                                <option value="slave3"> Slave3 </option>
-                                <option value="slave4"> Slave4 </option>
-                                <option value="slave5"> Slave5 </option>
-                                <option value="slave6"> Slave6 </option>
-                                <option value="slave7"> Slave7 </option>
+                                <option value="master"> Master Tile</option>
+                                <option value="slave1"> Slave1 Tile</option>
+                                <option value="slave2"> Slave2 Tile</option>
+                                <option value="slave3"> Slave3 Tile</option>
+                                <option value="slave4"> Slave4 Tile</option>
+                                <option value="slave5"> Slave5 Tile</option>
+                                <option value="slave6"> Slave6 Tile</option>
+                                <option value="slave7"> Slave7 Tile</option>
                             </select>
+
                             {
                                 (this.state.chartType === 'master') && <MasterAdc
                                     options={this.state.options}
@@ -122,15 +127,12 @@ class EnergyTiles extends React.Component{
 
                     <div className="col-3">
                         <div className="card shadow" style={{padding: '10px',backgroundColor: '#0e1726', borderRadius: '10px'}}>
-                            <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '5px'}}> Recent Activity </h5>
+                            <h5 style={{color: "white",fontFamily: 'Nunito Sans', paddingTop: '5px', paddingLeft : '5px'}}> Recent Activities </h5>
                             <RecentActivity/>
                         </div>
                     </div>
 
                 </div>
-
-
-
             </div>
         );
     }

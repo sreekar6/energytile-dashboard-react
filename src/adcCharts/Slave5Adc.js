@@ -20,7 +20,7 @@ class Slave5Adc extends React.Component {
     render() {
         return (
             <div id="chart">
-                <Chart options={this.state.options} series={this.state.series} type="area" height={350} />
+                <Chart options={this.state.options} series={this.state.series} type="area" height={250} />
             </div>
         );
     }

@@ -35,7 +35,7 @@ class EnergyTiles extends React.Component{
 
     render() {
         return (
-            <div class="main-content">
+            <div class="main-content" >
                 <div className="container-fluid " style={{width: '100%', height: '100%', backgroundColor: "#060818"}}>
                     {/*<h3 style={{color: 'white', fontFamily: 'Nunito Sans'}}> Energy Tile Dashboard</h3>*/}
                     {/*<div className="row">*/}

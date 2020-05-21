@@ -1,6 +1,7 @@
 import React from "react";
 
 import '../css/modules-widgets.css'
+import {API_URL} from "../constants/url";
 
 
 class RecentActivity extends React.Component {
@@ -100,10 +101,10 @@ class RecentActivity extends React.Component {
     // }
 
     fetchActivity = () => {
-        fetch('https://energytile-dashboard.herokuapp.com/api/recentactivity')
+        fetch(`${API_URL}/api/recentactivity`)
             .then(response => response.json())
             .then( response => {
-                // response = response.slice((response.length - 10), response.length);
+                // response = response.slice((response.length - 15), response.length);
                 console.log('After Slicing-->',response);
                 this.setState({
                     events : response.reverse()

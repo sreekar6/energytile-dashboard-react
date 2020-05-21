@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import {API_URL} from "../constants/url";
 
 
 class Slave2Adc extends React.Component {
@@ -13,7 +14,7 @@ class Slave2Adc extends React.Component {
     }
     componentDidMount() {
         this.fetchData();
-        setInterval(this.fetchData,2000)
+        setInterval(this.fetchData,1000)
     }
 
     render() {
@@ -24,20 +25,19 @@ class Slave2Adc extends React.Component {
         );
     }
     fetchData = () => {
-        fetch('https://energytile-dashboard.herokuapp.com/api/slave2')
+        fetch(`${API_URL}/api/slave2`)
             .then(response => response.json())
             .then(response => {
-                    // console.log(response)
+                    console.log(response)
                     let series = [];
                     let timestamp = [];
                     response.forEach( data =>{
-                        // console.log("each dataset-->", data)
+                        console.log("each dataset-->", data)
                         series.push(data.adc);
                         timestamp.push(data.id)
                     });
-                    // console.log(series);
-                    // console.log(timestamp);
-                    this.setState({series : [{name: "ADC", data: series}]});
+                    console.log(series);
+                    this.setState({series : [{name: "Slave2 ADC", data: series}]});
                     this.setState({options: {
                             chart: {
                                 fontFamily: 'Nunito, sans-serif',
@@ -58,7 +58,7 @@ class Slave2Adc extends React.Component {
                                     show: false
                                 },
                             },
-                            colors: ['#1b55e2', '#e7515a'],
+                            colors: ['#1b55e2'],
                             dataLabels: {
                                 enabled: false
                             },
@@ -75,14 +75,9 @@ class Slave2Adc extends React.Component {
                                     fillColor: '#000',
                                     strokeColor: '#000',
                                     size: 5
-                                }, {
-                                    seriesIndex: 2,
-                                    dataPointIndex: 11,
-                                    fillColor: '#000',
-                                    strokeColor: '#000',
-                                    size: 4
                                 }]
                             },
+
                             grid: {
                                 borderColor: '#191e3a',
                                 strokeDashArray: 5,
@@ -105,7 +100,7 @@ class Slave2Adc extends React.Component {
                             },
                             yaxis: {
                                 labels: {
-                                    offsetX: -15,
+                                    offsetX: -22,
                                     offsetY: 0,
                                     style: {
                                         fontSize: '12px',
@@ -115,8 +110,6 @@ class Slave2Adc extends React.Component {
                                 }
                             },
                             xaxis: {
-                                type: 'datetime',
-                                categories: timestamp,
                                 axisBorder: {
                                     show: false
                                 },
@@ -165,7 +158,6 @@ class Slave2Adc extends React.Component {
                                 },
                                 x: {
                                     show: false,
-                                    format: 'dd/MM/yy HH:mm'
                                 }
                             },
                             fill: {

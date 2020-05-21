@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import {API_URL} from "../constants/url";
 
 
 class Slave4Adc extends React.Component {
@@ -13,7 +14,7 @@ class Slave4Adc extends React.Component {
     }
     componentDidMount() {
         this.fetchData();
-        setInterval(this.fetchData,2000)
+        setInterval(this.fetchData,1000)
     }
 
     render() {
@@ -24,7 +25,7 @@ class Slave4Adc extends React.Component {
         );
     }
     fetchData = () => {
-        fetch('https://energytile-dashboard.herokuapp.com/api/slave4')
+        fetch(`${API_URL}/api/slave4`)
             .then(response => response.json())
             .then(response => {
                     // console.log(response)

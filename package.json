@@ -15,7 +15,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-time-line": "^0.3.0",
-    "react-vertical-timeline-component": "^2.6.2"
+    "react-vertical-timeline-component": "^2.6.2",
+    "typeface-nunito-sans": "0.0.72"
   },
   "engines": {
     "node": "13.6.x",
